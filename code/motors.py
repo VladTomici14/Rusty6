@@ -56,7 +56,7 @@ if __name__ == "__main__":
             move(forward3)
 
         elif command == "backward3":
-            move(backward3)_
+            move(backward3)
 
         elif command == "forward4":
             move(forward4)

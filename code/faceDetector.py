@@ -2,6 +2,7 @@ import cv2
 import argparse
 import RPi.GPIO as GPIO
 from picamera import PiCamera
+import time
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--input", required = False)

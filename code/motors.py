@@ -5,23 +5,23 @@ from . import powerFunctions
 motors = []
 GPIO.setmode("GPIO.BCM")
 
-forward1 =
-backward1 =
+forward1 = 21
+backward1 = 20
 motors.append(forward1)
 motors.append(backward1)
 
-forward2 =
-backward2 =
+forward2 = 16
+backward2 = 26
 motors.append(forward2)
 motors.append(backward2)
 
-forward3 =
-backward3 =
+forward3 = 19
+backward3 = 13
 motors.append(forward3)
 motors.append(backward3)
 
-forward4 =
-backward4 =
+forward4 = 6
+backward4 = 5
 motors.append(forward4)
 motors.append(backward4)
 
@@ -32,15 +32,40 @@ for i in range(8):
     GPIO.output(motors[i], GPIO.LOW)
 
 
+def move(motor):
+    GPIO.output(motor, GPIO.HIGH)
+    time.sleep(3)
+    GPIO.output(motor, GPIO.LOW)
+
 if __name__ == "__main__":
-    selectedMode = str(input("choose a mode: "))
-    if selectedMode == modes[0]:
-        intensity = 30
+    while(True):
+        command = str(input("choose a motor: "))
+        if command == "forward1":
+            move(forward1)
 
-    elif selectedMode == modes[1]:
-        intensity = 60
+        elif command == "backward1":
+            move(backward1)
 
-    elif selectedMode == modes[2]:
-        intensity = 100
+        elif command == "forward2":
+            move(forward2)
 
+        elif command == "backward2":
+            move(backward2)
 
+        elif command == "forward3":
+            move(forward3)
+
+        elif command == "backward3":
+            move(backward3)_
+
+        elif command == "forward4":
+            move(forward4)
+
+        elif command == "backward4":
+            move(backward4)
+
+        elif command == "exit":
+            break
+
+        else:
+            print("sorry, please enter a valid command")

@@ -1,6 +1,18 @@
 # The pins values for Raspberry Pi
 
-#### Motors
 _GPIO.setmode(GPIO.BCM)_
 
-![Raspberry Pi 4 - GPIO](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo.png)
+##### - L9110s
+- module 1 :
+    - forward1 = 21
+    - backward1 = 20
+    - forward2 = 16
+    - backward2 = 26
+   
+- module 2 :
+    - forward3 = 19
+    - backward3 = 13
+    - forward4 = 6
+    - backward4 = 5
+    
+![Raspberry Pi 4 - GPIO](https://i.stack.imgur.com/VEBEs.png)

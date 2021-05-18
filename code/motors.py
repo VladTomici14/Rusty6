@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-from . import powerFunctions
 
 motors = []
 GPIO.setmode("GPIO.BCM")

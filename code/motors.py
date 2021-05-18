@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 motors = []
-GPIO.setmode("GPIO.BCM")
+GPIO.setmode(GPIO.BCM)
 
 forward1 = 21
 backward1 = 20

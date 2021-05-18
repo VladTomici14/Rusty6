@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-f", "--file", type = str, required = True)

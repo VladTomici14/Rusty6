@@ -16,7 +16,7 @@ camera = PiCamera()
 if __name__ == "__main__":
     camera.start_preview()
     while True:
-        T, frame te= camera.read()
+        T, frame= camera.read()
 
         auxFrame = frame.copy()
         cv2.imshow("camera", auxFrame)

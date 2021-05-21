@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 motor_relay = 12
 solar_relay = 23

@@ -10,8 +10,9 @@ solar_relay = 23
 GPIO.setup(motor_relay, GPIO.OUT)
 GPIO.output(motor_relay, GPIO.LOW)
 
+
 if __name__ == "__main__":
-    command = str("enter: ")
+    command = str(input("enter: "))
     k = 0
     if command == k:
         k=k+1

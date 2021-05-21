@@ -1,7 +1,7 @@
 import cv2
 import argparse
-# import RPi.GPIO as GPIO
-# from picamera import PiCamera
+import RPi.GPIO as GPIO
+from picamera import PiCamera
 import time
 
 color = (255, 0, 0)
@@ -19,8 +19,7 @@ camera = cv2.VideoCapture(0)
 # camera = PiCamera()
 
 if __name__ == "__main__":
-    # camera.start_preview()
-
+    camera.start_preview()
     while True:
         T, frame = camera.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -49,7 +48,7 @@ if __name__ == "__main__":
         if cv2.waitKey(2) and 0xFF == ord("q"):
             break
 
-    # camera.stop_preview()
+    camera.stop_preview()
     camera.release()
     cv2.destroyAllWindows()
     cv2.waitKey(0)

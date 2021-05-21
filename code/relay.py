@@ -12,12 +12,15 @@ GPIO.output(motor_relay, GPIO.LOW)
 
 
 if __name__ == "__main__":
-    command = str(input("enter: "))
-    k = 0
-    if command == k:
-        k=k+1
+    while True:
+        command = str(input("enter: "))
+        k = 0
+        if command == "k":
+            k = k + 1
+        elif command == "q":
+            break
 
-    if k % 2 == False:
-        GPIO.output(motor_relay, GPIO.LOW)
-    else:
-        GPIO.output(motor_relay, GPIO.HIGH)
+        if k % 2 == False:
+            GPIO.output(motor_relay, GPIO.LOW)
+        elif k % 2 == True:
+            GPIO.output(motor_relay, GPIO.HIGH)

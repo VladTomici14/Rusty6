@@ -27,6 +27,8 @@ motors.append(backward4)
 modes = ["easy", "medium", "high"]
 charge_mode = False
 
+
+
 for i in range(8):
     GPIO.setup(motors[i], GPIO.OUT)
     GPIO.output(motors[i], GPIO.LOW)
@@ -39,8 +41,6 @@ def move(motor):
 if __name__ == "__main__":
     while(True):
         command = str(input("choose a motor: "))
-
-        if charge_mode == False:
 
         if command == "forward1":
             move(forward1)

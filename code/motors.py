@@ -94,23 +94,6 @@ def left():
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
 
-def choosePowerSource(ret):
-    if ret == "battery":
-        os.system("python3 relays/solarSwitch.py --state no")
-        time.sleep(0.3)
-        os.system("python3 relays/motorsSwitch.py --state yes")
-
-    elif ret == "solar":
-        os.system("python3 relays/motorsSwitch.py --state no")
-        time.sleep(0.3)
-        os.system("python3 relays/solarSwitch.py --state yes")
-
-    else:
-        os.system("python3 relays/motorsSwitch.py --state no")
-        time.sleep(0.3)
-        os.system("python3 relays/solarSwitch.py --state no")
-
-
 if __name__ == "__main__":
     try:
         while True:
@@ -130,8 +113,20 @@ if __name__ == "__main__":
                 print("r")
 
             elif char == ord("m"):
-                command = str(input("[battery / solar]: "))
-                choosePowerSource(command)
+                print("[battery / solar]: ")
+                command = screen.getch()
+                if command == ord("b"):
+                    os.system("python3 relays/solarSwitch.py --state no")
+                    time.sleep(0.3)
+                    os.system("python3 relays/motorsSwitch.py --state yes")
+                elif command == ord("s"):
+                    os.system("python3 relays/motorsSwitch.py --state no")
+                    time.sleep(0.3)
+                    os.system("python3 relays/solarSwitch.py --state yes")
+                else:
+                    os.system("python3 relays/motorsSwitch.py --state no")
+                    time.sleep(0.3)
+                    os.system("python3 relays/solarSwitch.py --state no")
 
             elif char == ord("q"):
                 break

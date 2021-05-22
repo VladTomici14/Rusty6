@@ -1,12 +1,17 @@
 import RPi.GPIO as GPIO
 import time
 
+def motorsOn():
+    GPIO.setup(relay, GPIO.OUT)
+
+
+def motorsOff():
+    GPIO.cleanup()
+    GPIO.setmode(GPIO.BCM)
+
 GPIO.setmode(GPIO.BCM)
 
 relay = 25
-GPIO.setup(relay, GPIO.OUT)
-GPIO.output(relay, True)
-
 k = 0
 
 try:
@@ -18,9 +23,9 @@ try:
             break
 
         if k % 2 == False:
-            GPIO.output(relay, False)
+            motorsOff()
         else:
-           GPIO.output(relay, True)
+            motorsOn()
 
 except KeyboardInterrupt:
     print("keyboard interrupt")

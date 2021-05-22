@@ -5,18 +5,21 @@ GPIO.setmode(GPIO.BCM)
 
 relay = 25
 GPIO.setup(relay, GPIO.OUT)
-
 GPIO.output(relay, False)
-print("false")
 
-time.sleep(2)
+try:
+    k = 0
+    while True:
+        command = str(input("command: "))
+        if command == "k":
+            k = k + 1
+        elif command == "q":
+            break
 
-GPIO.output(relay, True)
-print("true")
+        if k % 2 == False:
+            GPIO.output(relay, False)
+        else:
+            GPIO.output(relay, True)
 
-time.sleep(2)
-
-GPIO.output(relay, False)
-print("false")
-
-GPIO.cleanup()
+except KeyboardInterrupt:
+    GPIO.cleanup()

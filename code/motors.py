@@ -19,12 +19,12 @@ backward1 = 24
 motors.append(forward1)
 motors.append(backward1)
 
-forward2 = 13
-backward2 = 26
+forward2 = 23
+backward2 = 18
 motors.append(forward2)
 motors.append(backward2)
 
-forward3 = 18
+forward3 = 26
 backward3 = 13
 motors.append(forward3)
 motors.append(backward3)
@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 backward()
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
-            elif char == curses.KEY_BACKSPACE:
+            elif char == ord("c"):
                 for i in range(len(motors)):
                     GPIO.output(motors[i], GPIO.LOW)
 

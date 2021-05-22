@@ -5,7 +5,7 @@ GPIO.setmode(GPIO.BCM)
 
 relay = 25
 GPIO.setup(relay, GPIO.OUT)
-GPIO.output(relay, False)
+GPIO.output(relay, True)
 
 k = 0
 

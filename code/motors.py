@@ -52,6 +52,7 @@ def forward():
 
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
+    time.sleep(0.5)
 
 def backward():
     GPIO.output(forward1, GPIO.LOW)
@@ -65,6 +66,7 @@ def backward():
 
     GPIO.output(forward4, GPIO.LOW)
     GPIO.output(backward4, GPIO.HIGH)
+    time.sleep(0.5)
 
 def right():
     GPIO.output(forward1, GPIO.HIGH)
@@ -78,6 +80,7 @@ def right():
 
     GPIO.output(forward4, GPIO.LOW)
     GPIO.output(backward4, GPIO.HIGH)
+    time.sleep(0.5)
 
 def left():
     GPIO.output(forward1, GPIO.LOW)
@@ -91,6 +94,7 @@ def left():
 
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
+    time.sleep(0.5)
 
 if __name__ == "__main__":
     try:

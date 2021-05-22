@@ -28,8 +28,8 @@ backward3 = 13
 motors.append(forward3)
 motors.append(backward3)
 
-forward4 = 6
-backward4 = 5
+forward4 = 5
+backward4 = 6
 motors.append(forward4)
 motors.append(backward4)
 

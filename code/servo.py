@@ -6,15 +6,16 @@ GPIO.setmode(GPIO.BCM)
 servo1 = 4
 servo2 = 5
 
-pwm = GPIO.PWM(4, 50)
+GPIO.setup(servo1, GPIO.OUT)
+pwm = GPIO.PWM(servo1, 50)
 
 
 def setAngle(angle):
     duty = angle / 18 + 2
-    GPIO.output(4, GPIO.HIGH)
+    GPIO.output(servo1, GPIO.HIGH)
     pwm.ChangeDutyCycle(duty)
     time.sleep(1)
-    GPIO.output(4, GPIO.LOW)
+    GPIO.output(servo1, GPIO.LOW)
     pwm.ChangeDutyCycle(0)
 
 setAngle(30)

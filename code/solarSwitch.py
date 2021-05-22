@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO
 import time
 import argparse
 
+GPIO.setwarnings(False)
+
 ap = argparse.ArgumentParser()
 ap.add_argument("-s", "--state", type = str, required = True)
 args = ap.parse_args()
@@ -15,7 +17,6 @@ if args.state == "yes":
 
 elif args.state == "no":
     GPIO.output(SOLAR, GPIO.LOW)
-    GPIO.cleanup()
 
 else:
     GPIO.output(SOLAR, GPIO.LOW)

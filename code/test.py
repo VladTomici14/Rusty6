@@ -1,25 +1,8 @@
 import RPi.GPIO as GPIO
-import time
 
-motors = 22
-solar = 24
+GPIO.setmode(GPIO.BCM)  # GPIO Numbers instead of board numbers
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(motors, GPIO.OUT)
-GPIO.setup(solar, GPIO.OUT)
-
-try:
-    while True:
-        for x in range(5):
-            GPIO.output(motors, True)
-            time.sleep(0.1)
-            GPIO.output(motors, False)
-            GPIO.output(solar, True)
-            time.sleep(0.1)
-            GPIO.output(solar, False)
-
-        GPIO.output(motors,True)
-        GPIO.output(solar,True)
-
-except KeyboardInterrupt:
-    GPIO.cleanup()
+RELAIS_1_GPIO = 25
+GPIO.setup(RELAIS_1_GPIO, GPIO.OUT)  # GPIO Assign mode
+GPIO.output(RELAIS_1_GPIO, GPIO.LOW)  # out
+GPIO.output(RELAIS_1_GPIO, GPIO.HIGH)  # on

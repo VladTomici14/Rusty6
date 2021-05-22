@@ -10,10 +10,10 @@ GPIO.setmode(GPIO.BCM)
 SOLAR = 8
 GPIO.setup(SOLAR, GPIO.OUT)
 
-if args["state"] == "yes":
+if args.state == "yes":
     GPIO.output(SOLAR, GPIO.HIGH)
 
-elif args["state"] == "no":
+elif args.state == "no":
     GPIO.output(SOLAR, GPIO.LOW)
 
 else:

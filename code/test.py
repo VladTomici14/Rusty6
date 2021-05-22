@@ -8,3 +8,5 @@ GPIO.setup(RELAIS_1_GPIO, GPIO.OUT)  # GPIO Assign mode
 GPIO.output(RELAIS_1_GPIO, GPIO.LOW)  # out
 GPIO.output(RELAIS_1_GPIO, GPIO.HIGH)  # on
 GPIO.output(RELAIS_1_GPIO, GPIO.LOW)  # out
+
+GPIO.cleanup()

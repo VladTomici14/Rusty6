@@ -52,7 +52,7 @@ def forward():
 
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
-    time.sleep(0.5)
+    time.sleep(0.1)
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
@@ -68,7 +68,7 @@ def backward():
 
     GPIO.output(forward4, GPIO.LOW)
     GPIO.output(backward4, GPIO.HIGH)
-    time.sleep(0.5)
+    time.sleep(0.1)
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
@@ -84,7 +84,7 @@ def right():
 
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
-    time.sleep(0.5)
+    time.sleep(0.1)
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
@@ -100,7 +100,7 @@ def left():
 
     GPIO.output(forward4, GPIO.LOW)
     GPIO.output(backward4, GPIO.HIGH)
-    time.sleep(0.5)
+    time.sleep(0.1)
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 

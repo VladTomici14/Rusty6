@@ -44,10 +44,13 @@ if __name__ == "__main__":
 
             if command == "forward1":
                 GPIO.output(forward1, True)
+                print(f"forward1 {\n}")
                 GPIO.output(forward2, True)
+                print(f"forward2 {\n}")
                 GPIO.output(forward3, True)
+                print(f"forward3 {\n}")
                 GPIO.output(forward4, True)
-
+                print(f"forward4 {\n}")
                 time.sleep(2)
 
                 GPIO.output(forward1, False)

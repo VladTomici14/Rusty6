@@ -7,19 +7,18 @@ relay = 25
 GPIO.setup(relay, GPIO.OUT)
 GPIO.output(relay, False)
 
-try:
-    k = 0
-    while True:
-        command = str(input("command: "))
-        if command == "k":
-            k = k + 1
-        elif command == "q":
-            break
+k = 0
+while True:
+    command = str(input("command: "))
+    if command == "k":
+        k = k + 1
+    elif command == "q":
+        break
 
-        if k % 2 == False:
-            GPIO.output(relay, False)
-        else:
-            GPIO.output(relay, True)
+    if k % 2 == False:
+        GPIO.output(relay, False)
+    else:
+       GPIO.output(relay, True)
 
-except KeyboardInterrupt:
+finally:
     GPIO.cleanup()

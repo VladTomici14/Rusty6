@@ -110,21 +110,21 @@ if __name__ == "__main__":
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
             elif char == ord("u"):
-                GPIO.output(forward1, GPIO.HIGH)
+                GPIO.output(backward1, GPIO.HIGH)
                 time.sleep(1)
-                GPIO.output(forward1, GPIO.LOW)
+                GPIO.output(backward1, GPIO.LOW)
             elif char == ord("i"):
-                GPIO.output(forward2, GPIO.HIGH)
+                GPIO.output(backward2, GPIO.HIGH)
                 time.sleep(1)
-                GPIO.output(forward2, GPIO.LOW)
+                GPIO.output(backward2, GPIO.LOW)
             elif char == ord("o"):
-                GPIO.output(forward3, GPIO.HIGH)
+                GPIO.output(backward3, GPIO.HIGH)
                 time.sleep(1)
-                GPIO.output(forward3, GPIO.LOW)
+                GPIO.output(backward3, GPIO.LOW)
             elif char == ord("p"):
-                GPIO.output(forward4, GPIO.HIGH)
+                GPIO.output(backward4, GPIO.HIGH)
                 time.sleep(1)
-                GPIO.output(forward4, GPIO.LOW)
+                GPIO.output(backward4, GPIO.LOW)
 
             elif char == ord("c"):
                 for i in range(len(motors)):

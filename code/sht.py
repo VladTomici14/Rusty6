@@ -1,5 +1,6 @@
 import time
 from pi_sht1x import SHT1x as sht
+import RPi.GPIO as GPIO
 
 dat = 2
 sck = 3

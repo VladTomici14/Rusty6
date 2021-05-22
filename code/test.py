@@ -11,8 +11,10 @@ GPIO.setup(solar, GPIO.OUT)
 
 for i in range(3):
     GPIO.output(motors, GPIO.HIGH)
+    print("bababoi")
     time.sleep(1)
     GPIO.output(motors, GPIO.LOW)
+    print("babanoi")
 
 """
 try:

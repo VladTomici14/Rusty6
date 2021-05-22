@@ -1,13 +1,9 @@
 import RPi.GPIO as GPIO
 import time
 import curses
-from picamera import PiCamera
-from tkinter import *
-
-root = Tk()
-root.title("Rusty control pannel")
-root.geometry("1080x720")
-root.mainloop()
+import cv2
+#from picamera import PiCamera
+#from tkinter import *
 
 screen = curses.initscr()
 curses.noecho()
@@ -97,7 +93,6 @@ def left():
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
 
-camera = PiCamera()
 
 if __name__ == "__main__":
     try:

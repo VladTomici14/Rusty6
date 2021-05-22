@@ -8,5 +8,7 @@ GPIO.setup(relay, GPIO.OUT)
 GPIO.output(relay, GPIO.LOW)
 time.sleep(2)
 GPIO.output(relay, GPIO.HIGH)
+time.sleep(2)
+GPIO.output(relay, GPIO.LOW)
 
 GPIO.setwarnings(False)

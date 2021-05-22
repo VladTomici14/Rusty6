@@ -1,32 +1,35 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
-motors = 25
-solar = 8
+MOTORS = 25
+SOLAR = 8
+
+GPIO.setup(MOTORS, GPIO.OUT)
+GPIO.output(MOTORS, GPIO.LOW)
+
+GPIO.setup(SOLAR, GPIO.OUT)
+GPIO.output(SOLAR, GPIO.LOW)
 
 try:
     while True:
         command = str(input(""))
         if command == "motorson":
-            GPIO.cleanup()
-            time.sleep(0.5)
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(motors, GPIO.OUT)
+            GPIO.output(SOLAR, GPIO.LOW)
+            time.sleep(0.3)
+            GPIO.output(MOTORS, GPIO.HIGH)
 
         elif command == "motorsoff":
-            GPIO.cleanup()
+            GPIO.output(MOTORS, GPIO.LOW)
 
         elif command == "solaron":
-            GPIO.cleanup()
-            time.sleep(0.5)
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(solar, GPIO.OUT)
+            GPIO.output(MOTORS, GPIO.LOW)
+            time.sleep(0.3)
+            GPIO.output(SOLAR, GPIO.HIGH)
 
         elif command == "solaroff":
-            GPIO.cleanup()
+            GPIO.output(SOLAR, GPIO.LOW)
 
         elif command == "exit":
             break

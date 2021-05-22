@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setwarnings(False)
+# GPIO.setwarnings(False)
 
 def relayOn(relay):
     GPIO.setmode(GPIO.BCM)

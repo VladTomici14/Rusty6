@@ -74,6 +74,11 @@ if __name__ == "__main__":
                 move(backward3)
                 move(backward4)
 
+            if command == "exit":
+                break
+                GPIO.cleanup()
+
     except KeyboardInterrupt:
         GPIO.cleanup()
 
+    GPIO.cleaupt()

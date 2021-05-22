@@ -7,7 +7,7 @@ def relayOn(relay):
     GPIO.setup(relay, GPIO.OUT)
 
 
-def relayOff(relay):
+def relayOff():
     GPIO.cleanup()
     GPIO.setmode(GPIO.BCM)
 

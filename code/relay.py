@@ -3,7 +3,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-relay = 12
+relay = 25
 GPIO.setup(relay, GPIO.OUT)
 GPIO.output(relay, GPIO.LOW)
 time.sleep(2)

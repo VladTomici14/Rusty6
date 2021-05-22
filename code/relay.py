@@ -6,11 +6,11 @@ import time
 def relayOn(relay):
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(relay, GPIO.OUT)
-    GPIO.output(relay, True)
+    GPIO.output(relay, GPIO.HIGH)
 
 def relayOff():
-    GPIO.output(motors, False)
-    GPIO.output(motors, False)
+    GPIO.output(motors, GPIO.LOW)
+    GPIO.output(motors, GPIO.LOW)
     GPIO.cleanup()
 
 GPIO.setmode(GPIO.BCM)

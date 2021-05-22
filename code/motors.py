@@ -35,12 +35,10 @@ motors.append(forward4)
 motors.append(backward4)
 
 modes = ["easy", "medium", "high"]
-charge_mode = False
-
-motorsSwitch = 25
-solarSwitch = 8
 
 GPIO.setup(motors, GPIO.OUT)
+for i in range(len(motors)):
+    GPIO.ouput(motors[i], GPIO.LOW)
 
 def forward():
     GPIO.output(forward1, GPIO.HIGH)
@@ -101,16 +99,16 @@ if __name__ == "__main__":
 
             if char == ord("w") or char == curses.KEY_UP:
                 forward()
-                print("f")
             elif char == ord("a") or char == curses.KEY_LEFT:
                 left()
-                print("l")
             elif char == ord("s") or char == curses.KEY_DOWN:
                 backward()
-                print("b")
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
-                print("r")
+            elif char == curses.KEY_BACKSPACE:
+                for i in range(len(motors)):
+                    GPIO.output(motors[i], GPIO.LOW)
+
 
             elif char == ord("m"):
                 print("[battery / solar]: ")

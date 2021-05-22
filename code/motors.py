@@ -54,7 +54,7 @@ def forward():
     GPIO.output(backward4, GPIO.LOW)
     time.sleep(0.5)
     for i in range(len(motors)):
-        GPIO.outuput(motors[i], GPIO.LOW)
+        GPIO.output(motors[i], GPIO.LOW)
 
 def backward():
     GPIO.output(forward1, GPIO.LOW)
@@ -70,7 +70,7 @@ def backward():
     GPIO.output(backward4, GPIO.HIGH)
     time.sleep(0.5)
     for i in range(len(motors)):
-        GPIO.outuput(motors[i], GPIO.LOW)
+        GPIO.output(motors[i], GPIO.LOW)
 
 def right():
     GPIO.output(forward1, GPIO.HIGH)
@@ -86,7 +86,7 @@ def right():
     GPIO.output(backward4, GPIO.LOW)
     time.sleep(0.5)
     for i in range(len(motors)):
-        GPIO.outuput(motors[i], GPIO.LOW)
+        GPIO.output(motors[i], GPIO.LOW)
 
 def left():
     GPIO.output(forward1, GPIO.LOW)
@@ -102,7 +102,7 @@ def left():
     GPIO.output(backward4, GPIO.HIGH)
     time.sleep(0.5)
     for i in range(len(motors)):
-        GPIO.outuput(motors[i], GPIO.LOW)
+        GPIO.output(motors[i], GPIO.LOW)
 
 if __name__ == "__main__":
     try:

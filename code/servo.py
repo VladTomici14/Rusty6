@@ -9,6 +9,7 @@ servo2 = 5
 GPIO.setup(servo1, GPIO.OUT)
 pwm = GPIO.PWM(servo1, 50)
 
+pwm.start(0)
 
 def setAngle(angle):
     duty = angle / 18 + 2

@@ -27,11 +27,13 @@ motors.append(backward4)
 modes = ["easy", "medium", "high"]
 charge_mode = False
 
+motorsSwitch = 25
+solarSwitch = 8
 
-
-for i in range(8):
-    GPIO.setup(motors[i], GPIO.OUT)
-    GPIO.output(motors[i], GPIO.LOW)
+def initializeMotors():
+    for i in range(8):
+        GPIO.setup(motors[i], GPIO.OUT)
+        GPIO.output(motors[i], GPIO.LOW)
 
 def move(motor):
     GPIO.output(motor, GPIO.HIGH)
@@ -39,35 +41,39 @@ def move(motor):
     GPIO.output(motor, GPIO.LOW)
 
 if __name__ == "__main__":
-    while(True):
-        command = str(input("choose a motor: "))
+    try:
+        while True:
+            command = str(input("command: "))
+            if command == "motorson":
+                GPIO.cleanup()
+                time.sleep(0.3)
+                GPIO.setmode(GPIO.BCM)
+                GPIO.setup(motorsSwitch, GPIO.OUT)
 
-        if command == "forward1":
-            move(forward1)
+            elif command == "motorsoff":
+                GPIO.cleanup()
 
-        elif command == "backward1":
-            move(backward1)
+            elif command == "solaron":
+                GPIO.cleanup()
+                time.sleep(0.3)
+                GPIO.setmode(GPIO.BCM)
+                GPIO.setup(solarSwitch, GPIO.OUT)
 
-        elif command == "forward2":
-            move(forward2)
+            elif command == "motorson":
+                GPIO.cleanup()
 
-        elif command == "backward2":
-            move(backward2)
+            if command == "forward1":
+                move(forward1)
+                move(forward2)
+                move(forward3)
+                move(forward4)
 
-        elif command == "forward3":
-            move(forward3)
+            elif command == "backward":
+                move(backward1)
+                move(backward2)
+                move(backward3)
+                move(backward4)
 
-        elif command == "backward3":
-            move(backward3)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
 
-        elif command == "forward4":
-            move(forward4)
-
-        elif command == "backward4":
-            move(backward4)
-
-        elif command == "exit":
-            break
-
-        else:
-            print("sorry, please enter a valid command")

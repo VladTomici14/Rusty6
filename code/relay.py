@@ -30,4 +30,6 @@ elif command == "solaroff":
     GPIO.output(SOLAR, GPIO.LOW)
 
 
+time.sleep(3)
+
 GPIO.cleanup()

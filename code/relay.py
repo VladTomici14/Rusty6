@@ -12,29 +12,22 @@ GPIO.output(MOTORS, GPIO.LOW)
 GPIO.setup(SOLAR, GPIO.OUT)
 GPIO.output(SOLAR, GPIO.LOW)
 
-try:
-    while True:
-        command = str(input(""))
-        if command == "motorson":
-            GPIO.output(SOLAR, GPIO.LOW)
-            time.sleep(0.3)
-            GPIO.output(MOTORS, GPIO.HIGH)
+command = str(input(""))
+if command == "motorson":
+    GPIO.output(SOLAR, GPIO.LOW)
+    time.sleep(0.3)
+    GPIO.output(MOTORS, GPIO.HIGH)
 
-        elif command == "motorsoff":
-            GPIO.output(MOTORS, GPIO.LOW)
+elif command == "motorsoff":
+    GPIO.output(MOTORS, GPIO.LOW)
 
-        elif command == "solaron":
-            GPIO.output(MOTORS, GPIO.LOW)
-            time.sleep(0.3)
-            GPIO.output(SOLAR, GPIO.HIGH)
+elif command == "solaron":
+    GPIO.output(MOTORS, GPIO.LOW)
+    time.sleep(0.3)
+    GPIO.output(SOLAR, GPIO.HIGH)
 
-        elif command == "solaroff":
-            GPIO.output(SOLAR, GPIO.LOW)
+elif command == "solaroff":
+    GPIO.output(SOLAR, GPIO.LOW)
 
-        elif command == "exit":
-            break
-
-except KeyboardInterrupt:
-    GPIO.cleanup()
 
 GPIO.cleanup()

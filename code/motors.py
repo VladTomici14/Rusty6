@@ -135,7 +135,7 @@ if __name__ == "__main__":
             elif char == ord("v"):
                 print("[AI ?]: ")
                 command = screen.getch()
-                with picamera.PiCamera() as camera
+                with picamera.PiCamera() as camera:
                     camera.start_preview()
                     while True:
                         ret, frame = camera.read()

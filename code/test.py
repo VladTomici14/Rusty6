@@ -9,6 +9,30 @@ solar = 8
 GPIO.setup(motors, GPIO.OUT)
 GPIO.setup(solar, GPIO.OUT)
 
+for i in range(3):
+    GPIO.output(motors, GPIO.HIGH)
+    time.sleep(1)
+    GPIO.output(motors, GPIO.LOW)
+
+"""
+try:
+    while True:
+        command = str(input(""))
+        if command == "motorson":
+            
+        elif command == "motorsoff":
+            
+        elif command == "solaron":
+            
+        elif command == "solaroff";
+        
+        elif command == "exit":
+            break
+            
+except KeyboardInterrupt:
+    GPIO.cleanup()
+"""
+
 time.sleep(2)
 print("something")
 

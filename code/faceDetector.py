@@ -1,17 +1,26 @@
 import cv2
 import argparse
-import RPi.GPIO as GPIO
-from picamera import PiCamera
+# import RPi.GPIO as GPIO
+# from picamera import PiCamera
 import time
+from random import randint
 
-color = (255, 0, 0)
+def generateRandomColor():
+    r = randint(0, 255)
+    g = randint(0, 255)
+    b = randint(0, 255)
+    color = (b, g, r)
+
+    return color
+color = generateRandomColor()
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--input", required = False)
 args = vars(ap.parse_args())
 
-faceCascadePath = "../haarcascades/haarcascade_frontalface_default.xml"
+#faceCascadePath = "../haarcascades/haarcascade_frontalface_default.xml"
 catCascadePath = "../haarcascades/haarcascade_frontalcatface.xml"
+faceCascadePath = "../haarcascades/haarcascade_upperbody.xml"
 
 faceCascade = cv2.CascadeClassifier(faceCascadePath)
 catCascade = cv2.CascadeClassifier(catCascadePath)
@@ -19,7 +28,7 @@ camera = cv2.VideoCapture(0)
 # camera = PiCamera()
 
 if __name__ == "__main__":
-    camera.start_preview()
+    # camera.start_preview()
     while True:
         T, frame = camera.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -36,8 +45,8 @@ if __name__ == "__main__":
                                            minNeighbors = 5,
                                            minSize = (30, 30))
 
-        #for (x, y, w, h) in faces:
-        #    cv2.rectangle(auxFrame, (x, y), (x + w, y + h), color, 2)
+        for (x, y, w, h) in faces:
+            cv2.rectangle(auxFrame, (x, y), (x + w, y + h), color, 2)
 
         for(x, y, w, h) in cats:
             cv2.rectangle(auxFrame, (x, y), (x + w, y + h), color, 2)
@@ -48,7 +57,6 @@ if __name__ == "__main__":
         if cv2.waitKey(2) and 0xFF == ord("q"):
             break
 
-    camera.stop_preview()
     camera.release()
     cv2.destroyAllWindows()
     cv2.waitKey(0)

@@ -15,12 +15,12 @@ motors = []
 GPIO.setmode(GPIO.BCM)
 
 forward1 = 12
-backward1 = 20
+backward1 = 24
 motors.append(forward1)
 motors.append(backward1)
 
-forward2 = 24
-backward2 = 23
+forward2 = 13
+backward2 = 26
 motors.append(forward2)
 motors.append(backward2)
 

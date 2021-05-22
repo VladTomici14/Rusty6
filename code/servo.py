@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 servo1 = 4
 servo2 = 5
 
-pwm = GPIO.PWM(servo1, 50)
+pwm = GPIO.PWM(4, 50)
 
 
 def setAngle(angle):

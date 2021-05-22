@@ -6,13 +6,13 @@ import picamera
 import os
 from random import randint
 
-faceCascadePath = "../haarcascades/"
+faceCascadePath = "../haarcascades/haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(faceCascadePath)
 
-upperBodyCascadePath = "../haarcascades/"
+upperBodyCascadePath = "../haarcascades/haarcascade_upperbody.xml"
 upperBodyCascade = cv2.CascadeClassifier(upperBodyCascadePath)
 
-lowerBodyCascadePath = ""
+lowerBodyCascadePath = "../haarcascades/haarcascade_lowerboddy.xml"
 lowerBodyCascade = cv2.CascadeClassifier(lowerBodyCascadePath)
 
 screen = curses.initscr()

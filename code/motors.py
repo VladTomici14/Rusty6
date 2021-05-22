@@ -2,9 +2,18 @@ import RPi.GPIO as GPIO
 import time
 import curses
 import cv2
-#from picamera import PiCamera
-#from tkinter import *
+from picamera import PiCamera
 import os
+from random import randint
+
+faceCascadePath = "../haarcascades/"
+faceCascade = cv2.CascadeClassifier(faceCascadePath)
+
+upperBodyCascadePath = "../haarcascades/"
+upperBodyCascade = cv2.CascadeClassifier(upperBodyCascadePath)
+
+lowerBodyCascadePath = ""
+lowerBodyCascade = cv2.CascadeClassifier(lowerBodyCascadePath)
 
 screen = curses.initscr()
 curses.noecho()
@@ -40,6 +49,9 @@ GPIO.setup(motors, GPIO.OUT)
 for i in range(len(motors)):
     GPIO.output(motors[i], GPIO.LOW)
 
+# here we will define some functions
+
+# moves Rusty forward
 def forward():
     GPIO.output(forward1, GPIO.HIGH)
     GPIO.output(backward1, GPIO.LOW)
@@ -56,6 +68,7 @@ def forward():
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
+# moves Rusty backward
 def backward():
     GPIO.output(forward1, GPIO.LOW)
     GPIO.output(backward1, GPIO.HIGH)
@@ -72,6 +85,7 @@ def backward():
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
+# move Rusty to the right
 def right():
     GPIO.output(forward1, GPIO.HIGH)
     GPIO.output(backward1, GPIO.LOW)
@@ -88,6 +102,7 @@ def right():
     for i in range(len(motors)):
         GPIO.output(motors[i], GPIO.LOW)
 
+# moves Rusty to the left
 def left():
     GPIO.output(forward1, GPIO.LOW)
     GPIO.output(backward1, GPIO.HIGH)
@@ -117,6 +132,49 @@ if __name__ == "__main__":
                 backward()
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
+            elif char == ord("v"):
+                print("[AI ?]: ")
+                command = screen.getch()
+                camera = PiCamera()
+                camera.start_preview()
+                while True:
+                    ret, frame = camera.read()
+                    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+                    auxFrame = frame.copy()
+
+                    color = (randint(0, 255), randint(0, 255), randint(0, 255))
+
+                    faces = faceCascade.detectMultiScale(scaleFactor=1.1,
+                                                         minNeighbors=5,
+                                                         minSize=(30, 30))
+
+                    upperBodies = upperBodyCascade.detectMultiScale(scaleFactor=1.1,
+                                                          minNeighbors=5,
+                                                          minSize=(30, 30))
+
+                    lowerBodies = upperBodyCascade.detectMultiScale(scaleFactor=1.1,
+                                                                    minNeighbors=5,
+                                                                    minSize=(30, 30))
+
+                    for (x, y, w, h) in faces:
+                        cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+
+                    for (x, y, w, h) in upperBodies:
+                        cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+
+                    for (x, y, w, h) in lowerBodies:
+                        cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+
+
+                    if command == ord("y"):
+                        cv2.imshow("Rusty - camera feed", frame)
+                    elif command == ord("n"):
+                        cv2.imshow("Rusty - camera feed", auxFrame)
+
+                    if cv2.waitKey(2) and 0xFF == ord("x"):
+                        camera.stop_preview()
+                        break
 
             elif char == ord("c"):
                 for i in range(len(motors)):

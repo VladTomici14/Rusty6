@@ -53,6 +53,8 @@ def forward():
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
     time.sleep(0.5)
+    for i in range(len(motors)):
+        GPIO.outuput(motors[i], GPIO.LOW)
 
 def backward():
     GPIO.output(forward1, GPIO.LOW)
@@ -67,6 +69,8 @@ def backward():
     GPIO.output(forward4, GPIO.LOW)
     GPIO.output(backward4, GPIO.HIGH)
     time.sleep(0.5)
+    for i in range(len(motors)):
+        GPIO.outuput(motors[i], GPIO.LOW)
 
 def right():
     GPIO.output(forward1, GPIO.HIGH)
@@ -75,12 +79,14 @@ def right():
     GPIO.output(forward2, GPIO.LOW)
     GPIO.output(backward2, GPIO.HIGH)
 
-    GPIO.output(forward3, GPIO.HIGH)
-    GPIO.output(backward3, GPIO.LOW)
+    GPIO.output(forward3, GPIO.LOW)
+    GPIO.output(backward3, GPIO.HIGH)
 
-    GPIO.output(forward4, GPIO.LOW)
-    GPIO.output(backward4, GPIO.HIGH)
+    GPIO.output(forward4, GPIO.HIGH)
+    GPIO.output(backward4, GPIO.LOW)
     time.sleep(0.5)
+    for i in range(len(motors)):
+        GPIO.outuput(motors[i], GPIO.LOW)
 
 def left():
     GPIO.output(forward1, GPIO.LOW)
@@ -89,12 +95,14 @@ def left():
     GPIO.output(forward2, GPIO.HIGH)
     GPIO.output(backward2, GPIO.LOW)
 
-    GPIO.output(forward3, GPIO.LOW)
-    GPIO.output(backward3, GPIO.HIGH)
+    GPIO.output(forward3, GPIO.HIGH)
+    GPIO.output(backward3, GPIO.LOW)
 
-    GPIO.output(forward4, GPIO.HIGH)
-    GPIO.output(backward4, GPIO.LOW)
+    GPIO.output(forward4, GPIO.LOW)
+    GPIO.output(backward4, GPIO.HIGH)
     time.sleep(0.5)
+    for i in range(len(motors)):
+        GPIO.outuput(motors[i], GPIO.LOW)
 
 if __name__ == "__main__":
     try:
@@ -109,22 +117,6 @@ if __name__ == "__main__":
                 backward()
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
-            elif char == ord("u"):
-                GPIO.output(backward1, GPIO.HIGH)
-                time.sleep(1)
-                GPIO.output(backward1, GPIO.LOW)
-            elif char == ord("i"):
-                GPIO.output(backward2, GPIO.HIGH)
-                time.sleep(1)
-                GPIO.output(backward2, GPIO.LOW)
-            elif char == ord("o"):
-                GPIO.output(backward3, GPIO.HIGH)
-                time.sleep(1)
-                GPIO.output(backward3, GPIO.LOW)
-            elif char == ord("p"):
-                GPIO.output(backward4, GPIO.HIGH)
-                time.sleep(1)
-                GPIO.output(backward4, GPIO.LOW)
 
             elif char == ord("c"):
                 for i in range(len(motors)):

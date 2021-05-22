@@ -11,22 +11,20 @@ try:
     while True:
         command = str(input(""))
         if command == "motorson":
-            GPIO.cleanup()
-            time.sleep(0.5)
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(motors, GPIO.OUT)
+            GPIO.output(solar, GPIO.LOW)
+            time.sleep(0.3)
+            GPIO.output(motors, GPIO.HIGH)
 
         elif command == "motorsoff":
-            GPIO.cleanup()
+            GPIO.output(motors, GPIO.LOW)
 
         elif command == "solaron":
-            GPIO.cleanup()
-            time.sleep(0.5)
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(solar, GPIO.OUT)
+            GPIO.output(motors, GPIO.LOW)
+            time.sleep(3)
+            GPIO.output(solar, GPIO.HIGH)
 
         elif command == "solaroff":
-            GPIO.cleanup()
+            GPIO.output(solar, GPIO.LOW)
 
         elif command == "exit":
             break

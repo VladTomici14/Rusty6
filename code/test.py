@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 
-motors = 25
-solar = 8
+motors = 22
+solar = 24
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(motors, GPIO.OUT)

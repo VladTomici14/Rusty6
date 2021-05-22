@@ -9,10 +9,6 @@ def relayOn(relay):
     GPIO.output(relay, GPIO.HIGH)
 
 def relayOff():
-    GPIO.setup(motors, GPIO.OUT)
-    GPIO.setup(motors, GPIO.OUT)
-    GPIO.output(motors, GPIO.LOW)
-    GPIO.output(solar, GPIO.LOW)
     GPIO.cleanup()
 
 GPIO.setmode(GPIO.BCM)

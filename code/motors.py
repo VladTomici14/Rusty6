@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import time
 import curses
-import cv2
 from picamera import PiCamera
 from tkinter import *
 

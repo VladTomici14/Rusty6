@@ -1,5 +1,11 @@
 import RPi.GPIO as GPIO
 import time
+import curses
+
+screen = curses.initscr()
+curses.noecho()
+curses.cbreak()
+screen.keypad(True)
 
 motors = []
 GPIO.setmode(GPIO.BCM)
@@ -32,44 +38,85 @@ solarSwitch = 8
 
 GPIO.setup(motors, GPIO.OUT)
 
-def move(motor):
-    GPIO.output(motor, True)
-    time.sleep(3)
-    GPIO.output(motor, False)
+def forward():
+    GPIO.output(forward1, GPIO.HIGH)
+    GPIO.output(backward1, GPIO.LOW)
+
+    GPIO.output(forward2, GPIO.HIGH)
+    GPIO.output(backward2, GPIO.LOW)
+
+    GPIO.output(forward3, GPIO.HIGH)
+    GPIO.output(backward3, GPIO.LOW)
+
+    GPIO.output(forward4, GPIO.HIGH)
+    GPIO.output(backward4, GPIO.LOW)
+
+def backward():
+    GPIO.output(forward1, GPIO.LOW)
+    GPIO.output(backward1, GPIO.HIGH)
+
+    GPIO.output(forward2, GPIO.LOW)
+    GPIO.output(backward2, GPIO.HIGH)
+
+    GPIO.output(forward3, GPIO.LOW)
+    GPIO.output(backward3, GPIO.HIGH)
+
+    GPIO.output(forward4, GPIO.LOW)
+    GPIO.output(backward4, GPIO.HIGH)
+
+def right():
+    GPIO.output(forward1, GPIO.HIGH)
+    GPIO.output(backward1, GPIO.LOW)
+
+    GPIO.output(forward2, GPIO.LOW)
+    GPIO.output(backward2, GPIO.HIGH)
+
+    GPIO.output(forward3, GPIO.HIGH)
+    GPIO.output(backward3, GPIO.LOW)
+
+    GPIO.output(forward4, GPIO.LOW)
+    GPIO.output(backward4, GPIO.HIGH)
+
+def left():
+    GPIO.output(forward1, GPIO.LOW)
+    GPIO.output(backward1, GPIO.HIGH)
+
+    GPIO.output(forward2, GPIO.HIGH)
+    GPIO.output(backward2, GPIO.LOW)
+
+    GPIO.output(forward3, GPIO.LOW)
+    GPIO.output(backward3, GPIO.HIGH)
+
+    GPIO.output(forward4, GPIO.HIGH)
+    GPIO.output(backward4, GPIO.LOW)
+
 
 if __name__ == "__main__":
     try:
         while True:
-            command = str(input("command: "))
-
-            if command == "forward1":
-                GPIO.output(forward1, True)
-                print(f"forward1 {\n}")
-                GPIO.output(forward2, True)
-                print(f"forward2 {\n}")
-                GPIO.output(forward3, True)
-                print(f"forward3 {\n}")
-                GPIO.output(forward4, True)
-                print(f"forward4 {\n}")
-                time.sleep(2)
-
-                GPIO.output(forward1, False)
-                GPIO.output(forward2, False)
-                GPIO.output(forward3, False)
-                GPIO.output(forward4, False)
-
-
-            elif command == "backward":
-                move(backward1)
-                move(backward2)
-                move(backward3)
-                move(backward4)
-
-            if command == "exit":
+            char = screen.getch()
+            if char == ord("w") or char == curses.KEY_UP:
+                forward()
+                print("f")
+            elif char == ord("a") or char == curses.KEY_LEFT:
+                left()
+                print("l")
+            elif char == ord("s") or char == curses.KEY_DOWN:
+                backward()
+                print("b")
+            elif char == ord("d") or char == curses.KEY_RIGHT:
+                right()
+                print("r")
+            elif char == ord("q"):
                 break
-                GPIO.cleanup()
 
     except KeyboardInterrupt:
         GPIO.cleanup()
+
+    finally:
+        curses.nocbreak()
+        screen.keypad(0)
+        curses.echo()
+        curses.endwin()
 
     GPIO.cleaup()

@@ -3,7 +3,7 @@ import time
 import argparse
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-s", "--state", required = True)
+ap.add_argument("-s", "--state", type = str, required = True)
 args = ap.parse_args()
 
 GPIO.setmode(GPIO.BCM)

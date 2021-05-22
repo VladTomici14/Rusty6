@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 GPIO.setmode(GPIO.BCM)
                 GPIO.setup(motorsSwitch, GPIO.OUT)
 
-            elif command == "motorsoff":
+            elif command == "motoroff":
                 GPIO.cleanup()
 
             elif command == "solaron":
@@ -59,7 +59,7 @@ if __name__ == "__main__":
                 GPIO.setmode(GPIO.BCM)
                 GPIO.setup(solarSwitch, GPIO.OUT)
 
-            elif command == "motorson":
+            elif command == "solaroff":
                 GPIO.cleanup()
 
             if command == "forward1":

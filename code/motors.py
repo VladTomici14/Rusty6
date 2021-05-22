@@ -33,12 +33,12 @@ solarSwitch = 8
 def initializeMotors():
     for i in range(8):
         GPIO.setup(motors[i], GPIO.OUT)
-        GPIO.output(motors[i], GPIO.LOW)
+        GPIO.output(motors[i], False)
 
 def move(motor):
-    GPIO.output(motor, GPIO.HIGH)
+    GPIO.output(motor, True)
     time.sleep(3)
-    GPIO.output(motor, GPIO.LOW)
+    GPIO.output(motor, False)
 
 if __name__ == "__main__":
     try:

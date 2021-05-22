@@ -11,10 +11,10 @@ pwm = GPIO.PWM(servo1, 50)
 
 def setAngle(angle):
     duty = angle / 18 + 2
-    GPIO.output(servo1, GPIO.HIGH)
+    GPIO.output(04, GPIO.HIGH)
     pwm.ChangeDutyCycle(duty)
     time.sleep(1)
-    GPIO.output(servo1, GPIO.LOW)
+    GPIO.output(04, GPIO.LOW)
     pwm.ChangeDutyCycle(0)
 
 setAngle(30)

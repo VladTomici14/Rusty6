@@ -1,37 +1,39 @@
 import RPi.GPIO as GPIO
 import time
 
-def motorsOn():
+GPIO.setwarnings(False)
+
+def relayOn(relay):
     GPIO.setup(relay, GPIO.OUT)
 
 
-def motorsOff():
+def relayOff(relay):
     GPIO.cleanup()
     GPIO.setmode(GPIO.BCM)
 
 GPIO.setmode(GPIO.BCM)
+motors = 25
+solar = 8
 
-relay = 25
-k = 0
+if __name__ == "__main__":
+    try:
+        while True:
+            command = str(input(""))
+            if command == "motors on":
+                relayOff()
+                relayOn(motors)
 
-try:
-    while True:
-        command = str(input("command: "))
-        if command == "k":
-            k = k + 1
-        elif command == "q":
-            break
+            elif command == "motors off":
+                relayOff()
 
-        if k % 2 == False:
-            motorsOff()
-        else:
-            motorsOn()
+            elif command == "solar on":
+                relayOff()
+                relayOn(solar)
 
-except KeyboardInterrupt:
-    print("keyboard interrupt")
+            elif command == "solar off":
+                relayOff()
 
-except:
-    print("some error")
-
-finally:
-    GPIO.cleanup()
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+    finally:
+        GPIO.cleanup()

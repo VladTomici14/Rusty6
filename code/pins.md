@@ -17,6 +17,6 @@ _GPIO.setmode(GPIO.BCM)_
     
 - relays:
     - motors = 25
-    - solar = 
+    - solar = 8
     
 ![Raspberry Pi 4 - GPIO](https://i.stack.imgur.com/VEBEs.png)

@@ -38,7 +38,7 @@ modes = ["easy", "medium", "high"]
 
 GPIO.setup(motors, GPIO.OUT)
 for i in range(len(motors)):
-    GPIO.ouput(motors[i], GPIO.LOW)
+    GPIO.output(motors[i], GPIO.LOW)
 
 def forward():
     GPIO.output(forward1, GPIO.HIGH)

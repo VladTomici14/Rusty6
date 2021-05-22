@@ -43,6 +43,7 @@ def move(motor):
 if __name__ == "__main__":
     try:
         while True:
+            GPIO.cleanup()
             command = str(input("command: "))
             if command == "motorson":
                 GPIO.cleanup()
@@ -50,7 +51,7 @@ if __name__ == "__main__":
                 GPIO.setmode(GPIO.BCM)
                 GPIO.setup(motorsSwitch, GPIO.OUT)
 
-            elif command == "motoroff":
+            elif command == "motorsoff":
                 GPIO.cleanup()
 
             elif command == "solaron":
@@ -63,12 +64,14 @@ if __name__ == "__main__":
                 GPIO.cleanup()
 
             if command == "forward1":
+                initializeMotors()
                 move(forward1)
                 move(forward2)
                 move(forward3)
                 move(forward4)
 
             elif command == "backward":
+                initializeMotors()
                 move(backward1)
                 move(backward2)
                 move(backward3)

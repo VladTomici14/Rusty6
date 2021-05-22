@@ -14,13 +14,13 @@ screen.keypad(True)
 motors = []
 GPIO.setmode(GPIO.BCM)
 
-forward1 = 21
+forward1 = 12
 backward1 = 20
 motors.append(forward1)
 motors.append(backward1)
 
-forward2 = 16
-backward2 = 26
+forward2 = 24
+backward2 = 23
 motors.append(forward2)
 motors.append(backward2)
 

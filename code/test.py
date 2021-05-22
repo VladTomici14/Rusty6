@@ -6,20 +6,27 @@ GPIO.setmode(GPIO.BCM)
 
 motors = 25
 solar = 8
-GPIO.setup(motors, GPIO.OUT)
-GPIO.setup(solar, GPIO.OUT)
 
 try:
     while True:
+        GPIO.setmode(GPIO.BCM)
         command = str(input(""))
         if command == "motorson":
-            
+            GPIO.cleanup()
+            time.sleep(0.5)
+            GPIO.setup(motors, GPIO.OUT)
+
         elif command == "motorsoff":
-            
+            GPIO.cleanup()
+
         elif command == "solaron":
-            
-        elif command == "solaroff";
-        
+            GPIO.cleanup()
+            time.sleep(0.5)
+            GPIO.setup(solar, GPIO.OUT)
+
+        elif command == "solaroff":
+            GPIO.cleanup()
+
         elif command == "exit":
             break
             

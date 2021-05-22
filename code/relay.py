@@ -18,3 +18,5 @@ time.sleep(2)
 
 GPIO.output(relay, False)
 print("false")
+
+GPIO.cleanup()

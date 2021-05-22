@@ -43,10 +43,18 @@ if __name__ == "__main__":
             command = str(input("command: "))
 
             if command == "forward1":
-                move(forward1)
-                move(forward2)
-                move(forward3)
-                move(forward4)
+                GPIO.output(forward1, True)
+                GPIO.output(forward2, True)
+                GPIO.output(forward3, True)
+                GPIO.output(forward4, True)
+
+                time.sleep(2)
+
+                GPIO.output(forward1, False)
+                GPIO.output(forward2, False)
+                GPIO.output(forward3, False)
+                GPIO.output(forward4, False)
+
 
             elif command == "backward":
                 move(backward1)

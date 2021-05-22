@@ -17,6 +17,7 @@ if args.state == "yes":
 
 elif args.state == "no":
     GPIO.output(SOLAR, GPIO.LOW)
+    GPIO.cleanup()
 
 else:
     GPIO.output(SOLAR, GPIO.LOW)

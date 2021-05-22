@@ -9,14 +9,6 @@ solar = 8
 GPIO.setup(motors, GPIO.OUT)
 GPIO.setup(solar, GPIO.OUT)
 
-for i in range(3):
-    GPIO.output(motors, GPIO.HIGH)
-    print("bababoi")
-    time.sleep(1)
-    GPIO.output(motors, GPIO.LOW)
-    print("babanoi")
-
-"""
 try:
     while True:
         command = str(input(""))
@@ -33,7 +25,6 @@ try:
             
 except KeyboardInterrupt:
     GPIO.cleanup()
-"""
 
 time.sleep(2)
 print("something")

@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 dat = 2
 sck = 3
 
-with sht(dat, sck, gpio_mode = GPIO.BCM) as sensor:
+with sht(sck, dat, gpio_mode = GPIO.BCM) as sensor:
     temperature = sensor.read_temperature()
     humidity = sensor.read_humidity(temperature)
     print(sensor)

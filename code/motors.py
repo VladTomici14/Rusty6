@@ -4,6 +4,7 @@ import curses
 import cv2
 #from picamera import PiCamera
 #from tkinter import *
+import os
 
 screen = curses.initscr()
 curses.noecho()
@@ -93,11 +94,28 @@ def left():
     GPIO.output(forward4, GPIO.HIGH)
     GPIO.output(backward4, GPIO.LOW)
 
+def choosePowerSource(ret):
+    if ret == "battery":
+        os.system("python3 relays/solarSwitch.py --state no")
+        time.sleep(0.3)
+        os.system("python3 relays/motorsSwitch.py --state yes")
+
+    elif ret == "solar":
+        os.system("python3 relays/motorsSwitch.py --state no")
+        time.sleep(0.3)
+        os.system("python3 relays/solarSwitch.py --state yes")
+
+    else:
+        os.system("python3 relays/motorsSwitch.py --state no")
+        time.sleep(0.3)
+        os.system("python3 relays/solarSwitch.py --state no")
+
 
 if __name__ == "__main__":
     try:
         while True:
             char = screen.getch()
+
             if char == ord("w") or char == curses.KEY_UP:
                 forward()
                 print("f")
@@ -110,6 +128,11 @@ if __name__ == "__main__":
             elif char == ord("d") or char == curses.KEY_RIGHT:
                 right()
                 print("r")
+
+            elif char == ord("m"):
+                command = str(input("[battery / solar]: "))
+                choosePowerSource(command)
+
             elif char == ord("q"):
                 break
 

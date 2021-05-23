@@ -20,6 +20,7 @@ color = (randint(0, 255), randint(0, 255), randint(0, 255))
 
 camera = PiCamera()
 camera.resolution = (640, 480)
+camera.rotation = 180
 camera.framerate = 32
 rawCapture = PiRGBArray(camera, size = (640, 480))
 

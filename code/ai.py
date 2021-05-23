@@ -61,7 +61,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     for (x, y, w, h) in fullBodies:
         cv2.rectangle(auxFrame, (x, y), (x + w, y + w), color, 2)
 
-    cv2.imshow("frame", image)
+    cv2.imshow("frame", auxFrame)
     key = cv2.waitKey(1) & 0xFF
 
     rawCapture.truncate(0)

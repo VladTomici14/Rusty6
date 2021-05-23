@@ -19,4 +19,6 @@ _GPIO.setmode(GPIO.BCM)_
     - motors = 25
     - solar = 8
     
+![Circuit diagram](https://ibb.co/br5BZ4Q)    
+  
 ![Raspberry Pi 4 - GPIO](https://i.stack.imgur.com/VEBEs.png)

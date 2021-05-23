@@ -135,47 +135,11 @@ if __name__ == "__main__":
             elif char == ord("v"):
                 print("[AI ?]: ")
                 command = screen.getch()
-                with picamera.PiCamera() as camera:
-                    camera.start_preview()
-                    while True:
-                        ret, frame = camera.read()
-                        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-                        auxFrame = frame.copy()
-
-                        color = (randint(0, 255), randint(0, 255), randint(0, 255))
-
-                        faces = faceCascade.detectMultiScale(scaleFactor=1.1,
-                                                             minNeighbors=5,
-                                                             minSize=(30, 30))
-
-                        upperBodies = upperBodyCascade.detectMultiScale(scaleFactor=1.1,
-                                                              minNeighbors=5,
-                                                              minSize=(30, 30))
-
-                        lowerBodies = upperBodyCascade.detectMultiScale(scaleFactor=1.1,
-                                                                        minNeighbors=5,
-                                                                        minSize=(30, 30))
-
-                        for (x, y, w, h) in faces:
-                            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-
-                        for (x, y, w, h) in upperBodies:
-                            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-
-                        for (x, y, w, h) in lowerBodies:
-                            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-
-
-                        if command == ord("y"):
-                            cv2.imshow("Rusty - camera feed", frame)
-                        elif command == ord("n"):
-                            cv2.imshow("Rusty - camera feed", auxFrame)
-
-                        if cv2.waitKey(2) and 0xFF == ord("x"):
-                            camera.stop_preview()
-                            break
-
+                if command == ord("y"):
+                    os.system("python3 ai.py")
+                elif command == ord("n"):
+                    os.system("python3 camera.py")
+                    
             elif char == ord("c"):
                 for i in range(len(motors)):
                     GPIO.output(motors[i], GPIO.LOW)

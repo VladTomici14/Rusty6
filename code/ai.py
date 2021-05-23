@@ -32,16 +32,20 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 
-    faces = frontalFaceCascade.detectMultiScale(scaleFactor = 1.1,
+    faces = frontalFaceCascade.detectMultiScale(blurred,
+                                                scaleFactor = 1.1,
                                                 minNeighbors = 5,
                                                 minSize = (30, 30))
-    upperBodies = upperBodyCascade.detectMultiScale(scaleFactor=1.1,
+    upperBodies = upperBodyCascade.detectMultiScale(blurred,
+                                                    scaleFactor=1.1,
                                                     minNeighbors=5,
                                                     minSize=(30, 30))
-    lowerBodies = lowerBodyCascade.detectMultiScale(scaleFactor=1.1,
+    lowerBodies = lowerBodyCascade.detectMultiScale(blurred,
+                                                    scaleFactor=1.1,
                                                     minNeighbors=5,
                                                     minSize=(30, 30))
-    fullBodies = fullBodyCascade.detectMultiScale(scaleFactor=1.1,
+    fullBodies = fullBodyCascade.detectMultiScale(blurred,
+                                                  scaleFactor=1.1,
                                                   minNeighbors=5,
                                                   minSize=(30, 30))
 

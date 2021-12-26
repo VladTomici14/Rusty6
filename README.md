@@ -28,3 +28,5 @@ Rusty represents a continuous development during the last 3 years. Always develo
 Special thanks to everyone who was by my side during the last years. To all the events that I had attended along with my buddy Rusty.
 
 This project is dedicated to everyone who dreams the impossible and for all the children that are like the 13 years old version of me back in the time. 
+
+<3
